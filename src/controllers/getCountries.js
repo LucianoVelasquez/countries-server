@@ -27,7 +27,7 @@ const getCountries = async (req, res) => {
         attributes:['name'],
         through: { attributes: [] }
       }]});
-    
+      
       return res.status(200).json(allCountris);
     }
   } catch ({ message }) {

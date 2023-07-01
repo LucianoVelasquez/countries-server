@@ -3,12 +3,17 @@ const { Activity } = require("../db");
 const deleteActivities = async (req, res) => {
   try {
     const { id } = req.params;
+    if(id !== 'deletAll'){
+      const removedActivite = await Activity.destroy({ where: { id: id } });
+
+      if(!removedActivite) throw Error('Id incorrecto');
+
+      return res.status(200).json({ acces: removedActivite });
+    }else{
+      const removedActivite = await Activity.destroy({ where: {} });
+      return res.status(200).json({ acces: removedActivite });
+    }
     
-    const removedActivite = await Activity.destroy({ where: { id: id } });
-
-    if(!removedActivite) throw Error('Id incorrecto');
-
-    return res.status(200).json({ acces: removedActivite });
   } catch (error) {
 
     return error.message.includes('Id')?

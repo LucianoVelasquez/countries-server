@@ -1,10 +1,14 @@
 const axios = require("axios");
+const data2 = require('../../api/db.json');
 
 module.exports = async (Country) => {
   try {
-    const { data } = await axios.get("http://localhost:5000/countries");
-
-    data.forEach(async (element) => {
+    /* const { data } = await axios.get("http://localhost:5000/countries"); */
+    let { countries } = data2; 
+    
+    /* console.log(data3); */ 
+    
+    countries.forEach(async (element) => {
       const {
         cca3,
         name,
