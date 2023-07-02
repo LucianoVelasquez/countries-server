@@ -11,7 +11,7 @@ const {
   logging: false, 
   native: false, 
 }); */
-const sequelize = new Sequelize(DB_DEPLOY, {
+const sequelize = new Sequelize(process.env.DB_DEPLOY, {
   logging: false, 
   native: false,
   dialectOptions: {

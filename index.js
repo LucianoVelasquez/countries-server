@@ -1,7 +1,7 @@
 const server = require("./src/server");
 const { conn, Country } = require('./src/db.js');
 const { getAllCountries } = require('./src/controllers/index');
-const PORT = 3001 ;
+const PORT = process.env.PORT || 3001 ;
 
 conn.sync({ force: true }).then(() => { //Tiene que estar en false para que los cambios se guarden;
 server.listen(PORT, () => {
